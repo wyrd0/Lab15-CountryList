@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab15_CountryList
 {
-    class Program
+    class CountriesApp
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
