@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Lab15_CountryList
 {
-    class CountriesTextFile
+    public class CountriesTextFile
     {
-        private List<string> countryList;
-        private string fileLoc;
+        public List<string> countryList;
+        public string fileLoc;
 
         public CountriesTextFile(List<string> countryList, string fileLoc)
         {
@@ -46,7 +46,7 @@ namespace Lab15_CountryList
         }
         #endregion
 
-        public void CreateFile()
+        public void CreateFile(string fileLoc)
         {
                 FileLoc = "countries.txt";  
                 if (File.Exists(FileLoc) == false)
@@ -58,15 +58,17 @@ namespace Lab15_CountryList
         public List<string> WriteToCountriesFile()
         {
             StreamWriter writer = new StreamWriter(FileLoc);
+            File.WriteAllLines(FileLoc, CountryList);
 
+            return CountryList;
         }
 
         public List<string> ReadFileToList()
         {
             List<string> CountryList = new List<string>();
-            this.FileLoc = "countries.txt";
+            FileLoc = "countries.txt";
 
-            StreamReader reader = new StreamReader(this.FileLoc);
+            StreamReader reader = new StreamReader(FileLoc);
             
                         
             string allCountries = reader.ReadToEnd().Trim();
@@ -80,10 +82,6 @@ namespace Lab15_CountryList
             reader.Close();
             return CountryList;
         }
-
-        private object CreateFile(string fileLoc)
-        {
-            throw new NotImplementedException();
         }
     }
-}
+
